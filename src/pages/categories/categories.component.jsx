@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 
 import CategoryPage from "../category/category.component";
@@ -7,7 +8,6 @@ import CategoriesOverview from "../../components/categories-overview/categories-
 class CategoriesPage extends Component {
   render() {
     const { match } = this.props;
-
     return (
       <div>
         <Route exact path={`${match.path}`} component={CategoriesOverview} />
@@ -16,5 +16,4 @@ class CategoriesPage extends Component {
     );
   }
 }
-
-export default CategoriesPage;
+export default connect(null, null)(CategoriesPage);
