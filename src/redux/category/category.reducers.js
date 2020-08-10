@@ -2,6 +2,7 @@ const INITIAL_STATE = {
   fresh: {
     id: 1,
     title: "Some fresh food",
+    url: "/categories/fresh",
     entries: [
       {
         id: 1,
@@ -26,6 +27,7 @@ const INITIAL_STATE = {
   frozen: {
     id: 2,
     title: "Some frozen goods",
+    url: "/categories/frozen",
     entries: [
       {
         id: 1,

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { selectCategory } from "../../redux/category/category.selectors";
+import CategoryEntry from "../../components/category-entry/category-entry.component";
 
 const CategoriesPage = ({ match, category }) => {
   if (!category) {
@@ -11,8 +12,8 @@ const CategoriesPage = ({ match, category }) => {
   return (
     <div>
       <h1>{title}</h1>
-      {entries.map((entry) => (
-        <div key={entry.id}>{entry.title}</div>
+      {entries.map(({ id, ...entry }) => (
+        <CategoryEntry key={id} {...entry} />
       ))}
     </div>
   );

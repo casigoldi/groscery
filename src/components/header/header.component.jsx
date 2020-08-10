@@ -7,13 +7,13 @@ const Header = () => (
       <span>Logo</span>
     </NavLink>
     <NavLink exact to="/categories/fresh">
-      Some category
+      Fresh
     </NavLink>
     <NavLink exact to="/categories/frozen">
-      Another category
+      Frozen
     </NavLink>
     <NavLink exact to="/categories/drinks">
-      Awesome category
+      Drinks
     </NavLink>
     <NavLink exact to="/categories/">
       All categories
