@@ -5,15 +5,17 @@ import { selectCategoriesOverview } from "../../redux/category/category.selector
 import { createStructuredSelector } from "reselect";
 import CategoryPreview from "../category-preview/category-preview.component";
 
+import { CategoriesOverviewContainer } from "./categories-overview.styles";
+
 const CategoriesOverview = (props) => {
   const { categories } = props;
 
   return (
-    <div>
+    <CategoriesOverviewContainer>
       {categories.map(({ id, ...category }) => (
         <CategoryPreview key={id} {...category} />
       ))}
-    </div>
+    </CategoriesOverviewContainer>
   );
 };
 

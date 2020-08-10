@@ -4,15 +4,17 @@ import { createStructuredSelector } from "reselect";
 import { selectTeaserHomepage } from "../../redux/teaser/teaser.selector";
 import Teaser from "../teaser/teaser.component";
 
+import { TeasersContainer } from "./teasers.styles";
+
 const Teasers = (props) => {
   const { teasers } = props;
 
   return (
-    <div>
+    <TeasersContainer>
       {teasers.map(({ id, ...args }) => (
         <Teaser key={id} {...args} />
       ))}
-    </div>
+    </TeasersContainer>
   );
 };
 

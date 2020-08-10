@@ -1,14 +1,30 @@
 import React from "react";
 
+import {
+  CategoryEntryContainer,
+  CategoryEntryImage,
+  CategoryEntryContent,
+  CategoryEntryHeadline,
+  CategoryEntryDescription,
+  CategoryEntryType,
+  CategoryEntryLink,
+} from "./category-entry.styles";
+
 const CategoryEntry = (props) => {
-  const { name, description, type } = props;
+  const { title, description, type, imageUrl } = props;
 
   return (
-    <div>
-      <span>{name}</span>
-      <span>{description}</span>
-      <span>{type}</span>
-    </div>
+    <CategoryEntryContainer>
+      <CategoryEntryImage src={imageUrl} alt={title}></CategoryEntryImage>
+      <CategoryEntryContent>
+        <CategoryEntryHeadline>{title}</CategoryEntryHeadline>
+        <CategoryEntryDescription>
+          {description.substring(0, 40)} {description.length > 40 ? "…" : ""}
+        </CategoryEntryDescription>
+        <CategoryEntryType className={type}>{type}</CategoryEntryType>
+        <CategoryEntryLink>> More info (coming soon)</CategoryEntryLink>
+      </CategoryEntryContent>
+    </CategoryEntryContainer>
   );
 };
 

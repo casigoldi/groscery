@@ -2,20 +2,27 @@ import React from "react";
 import CategoryEntry from "../category-entry/category-entry.component";
 import { Link } from "react-router-dom";
 
+import {
+  CategoryPreviewHeadline,
+  CategoryPreviewContainer,
+} from "./category-preview.styles";
+
 const CategoryPreview = (props) => {
   const { id, title, url, entries } = props;
 
   return (
-    <div key={id}>
-      <h1>
+    <>
+      <CategoryPreviewHeadline>
         <Link to={`${url}`}>{title}</Link>
-      </h1>
-      {entries
-        .filter((entry, index) => index < 3)
-        .map(({ id, ...entry }) => (
-          <CategoryEntry key={id} {...entry} />
-        ))}
-    </div>
+      </CategoryPreviewHeadline>
+      <CategoryPreviewContainer>
+        {entries
+          .filter((entry, index) => index < 4)
+          .map(({ id, ...entry }) => (
+            <CategoryEntry key={id} {...entry} />
+          ))}
+      </CategoryPreviewContainer>
+    </>
   );
 };
 
