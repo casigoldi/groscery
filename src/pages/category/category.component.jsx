@@ -1,27 +1,24 @@
-import React from "react";
 import { connect } from "react-redux";
-import { selectCategory } from "../../redux/category/category.selectors";
-import CategoryEntry from "../../components/category-entry/category-entry.component";
+import {
+  selectCategory,
+  selectVisibleEntries,
+  selectFacets,
+} from "../../redux/category/category.selectors";
 
-import { CategoryContainer } from "./category.styles";
-
-const CategoriesPage = ({ match, category }) => {
-  if (!category) {
-    return <h1>Category "{match.params.categoryId}" not found</h1>;
-  }
-
-  const { title, entries } = category;
-  return (
-    <CategoryContainer>
-      {entries.map(({ id, ...entry }) => (
-        <CategoryEntry key={id} {...entry} />
-      ))}
-    </CategoryContainer>
-  );
-};
+import CategoryEntriesFilter from "../../components/category-entries-filter/category-entries-filter.component";
+import { setVisibilityFilter } from "../../redux/category/category.actions";
 
 const mapStateToProps = (state, ownProps) => ({
   category: selectCategory(ownProps.match.params.categoryId)(state),
+  entries: selectVisibleEntries(ownProps.match.params.categoryId)(state),
+  facets: selectFacets(ownProps.match.params.categoryId)(state),
 });
 
-export default connect(mapStateToProps)(CategoriesPage);
+const mapDispatchToProps = (dispatch) => ({
+  setVisibility: (filter, id) => dispatch(setVisibilityFilter(filter, id)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CategoryEntriesFilter);

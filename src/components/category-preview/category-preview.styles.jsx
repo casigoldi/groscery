@@ -2,23 +2,23 @@ import styled from "styled-components";
 
 export const CategoryPreviewContainer = styled.div`
   display: flex;
-  flex: 1 1 0;
   flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: stretch;
-  background-color: #f4f4f4;
-  padding: 15px;
+  justify-content: flex-start;
+  background-color: #ccc;
+  padding: 15px 5px;
   margin-bottom: 60px;
 `;
 
 export const CategoryPreviewHeadline = styled.h2`
-  font-size: 5vw;
+  font-size: 10vw;
   text-transform: uppercase;
   margin-bottom: 0;
   line-height: 0.7em;
+  color: #ccc;
+  margin-top: 15px;
 
   a {
-    color: #f4f4f4;
+    color: #ccc;
     text-decoration: none;
   }
 `;

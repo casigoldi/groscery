@@ -8,7 +8,7 @@ import {
 } from "./category-preview.styles";
 
 const CategoryPreview = (props) => {
-  const { id, title, url, entries } = props;
+  const { title, url, entries } = props;
 
   return (
     <>

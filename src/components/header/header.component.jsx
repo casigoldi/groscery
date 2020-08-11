@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import {
   HeaderContainer,
@@ -10,7 +10,7 @@ import {
 const Header = () => (
   <HeaderContainer>
     <HeaderNavigationLink as={Link} to="/" className="visibleMobile">
-      <span>Logo</span>
+      <span>Gloscery</span>
     </HeaderNavigationLink>
     <HeaderNavigation>
       <HeaderNavigationLink exact to="/categories/fresh">

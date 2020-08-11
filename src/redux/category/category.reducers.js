@@ -1,8 +1,12 @@
 const INITIAL_STATE = {
   fresh: {
-    id: 1,
+    id: "fresh",
     title: "Fresh",
     url: "/categories/fresh",
+    facets: [
+      { id: "fruits", name: "Fruits", active: false },
+      { id: "meat", name: "Meat", active: false },
+    ],
     entries: [
       {
         id: 1,
@@ -36,12 +40,47 @@ const INITIAL_STATE = {
         type: "meat",
         imageUrl: "https://source.unsplash.com/300x200/?steak",
       },
+      {
+        id: 5,
+        title: "Peaches",
+        description:
+          "Banana peaches Banana peaches peaches peachesdas ada sdasd description",
+        type: "fruits",
+        imageUrl: "https://source.unsplash.com/300x200/?peaches",
+      },
+      {
+        id: 6,
+        title: "Plums",
+        description: "Plumpa plumbi plumba descriotion some stuff",
+        type: "fruits",
+        imageUrl: "https://source.unsplash.com/300x200/?plums",
+      },
+      {
+        id: 7,
+        title: "Pineapple",
+        description:
+          "Chicken description Chicken descriptionChicken descriptionChicken descriptionChicken description",
+        type: "meat",
+        imageUrl: "https://source.unsplash.com/300x200/?pineapple",
+      },
+      {
+        id: 8,
+        title: "Coconut",
+        description:
+          "Coconut description Coconut Coconut descriptionBeef descriptionBeef descriptionBeef description",
+        type: "meat",
+        imageUrl: "https://source.unsplash.com/300x200/?coconut",
+      },
     ],
   },
   frozen: {
-    id: 2,
+    id: "frozen",
     title: "Frozen",
     url: "/categories/frozen",
+    facets: [
+      { id: "convience", name: "Convience", active: false },
+      { id: "fish", name: "Fish", active: false },
+    ],
     entries: [
       {
         id: 1,
@@ -78,9 +117,13 @@ const INITIAL_STATE = {
     ],
   },
   drinks: {
-    id: 3,
+    id: "drinks",
     title: "Drinks",
     url: "/categories/drinks",
+    facets: [
+      { id: "soft", name: "Softdrink", active: false },
+      { id: "alcohol", name: "Alcohol", active: false },
+    ],
     entries: [
       {
         id: 1,
@@ -116,8 +159,25 @@ const INITIAL_STATE = {
   },
 };
 
+const setVisibilityFilter = (state, action) => {
+  const category = state[action.categoryId];
+  const facets = category.facets.map((facet) =>
+    facet.id === action.facet.id ? { ...facet, active: !facet.active } : facet
+  );
+  return {
+    ...state,
+    [action.categoryId]: {
+      ...category,
+      facets: [...facets],
+    },
+  };
+};
+
 const categoryReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case "SET_VISIBILITY_FILTER":
+      console.log("VISIBILITY FILTER");
+      return setVisibilityFilter(state, action);
     default:
       return state;
   }

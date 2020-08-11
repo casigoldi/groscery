@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const CategoryEntryContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 20%;
-  margin: 10px;
-  background-color: #fff;
-  min-width: 200px;
+  flex: 1 1 50%;
+  min-width: 250px;
+  padding: 10px;
+
+  @media only screen and (min-width: 760px) {
+    flex: 0 1 25%;
+  }
 `;
 
 export const CategoryEntryImage = styled.img`
@@ -16,6 +17,7 @@ export const CategoryEntryImage = styled.img`
 `;
 
 export const CategoryEntryContent = styled.div`
+  background-color: #fff;
   position: relative;
   padding: 15px;
 `;
@@ -50,7 +52,7 @@ export const CategoryEntryType = styled.span`
   }
 
   &.fruits {
-    background-color: blue;
+    background-color: green;
   }
 
   &.alcohol {

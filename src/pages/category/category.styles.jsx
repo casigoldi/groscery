@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CategoryContainer = styled.div`
   display: flex;
-  flex: 1 1 0;
+  flex: 1 1 auto;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: stretch;
