@@ -15,7 +15,7 @@ export const CategoryPreviewHeadline = styled.h2`
   margin-bottom: 0;
   line-height: 0.7em;
   color: #ccc;
-  margin-top: 15px;
+  margin-top: 30px;
 
   a {
     color: #ccc;
