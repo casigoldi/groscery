@@ -1,11 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { selectCategoriesOverview } from "../../redux/category/category.selectors";
+import {
+  selectCategoriesOverview,
+  selectCategoryIsLoading,
+} from "../../redux/category/category.selectors";
 import { createStructuredSelector } from "reselect";
 import CategoryPreview from "../category-preview/category-preview.component";
 
 import { CategoriesOverviewContainer } from "./categories-overview.styles";
+import WithSpinner from "../with-spinner/with-spinner.component";
+import { compose } from "redux";
 
 const CategoriesOverview = (props) => {
   const { categories } = props;
@@ -20,7 +25,13 @@ const CategoriesOverview = (props) => {
 };
 
 const mapStateToProps = createStructuredSelector({
+  isLoading: selectCategoryIsLoading,
   categories: selectCategoriesOverview,
 });
 
-export default connect(mapStateToProps)(CategoriesOverview);
+const CategoriesPageOverviewContainer = compose(
+  connect(mapStateToProps, null),
+  WithSpinner
+)(CategoriesOverview);
+
+export default CategoriesPageOverviewContainer;

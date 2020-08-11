@@ -4,8 +4,13 @@ import { Route } from "react-router-dom";
 
 import CategoryPage from "../category/category.component";
 import CategoriesOverview from "../../components/categories-overview/categories-overview.component";
+import { requestCategoriesIfNeeded } from "../../redux/category/category.actions";
 
 class CategoriesPage extends Component {
+  componentDidMount() {
+    this.props.onRequestCategories();
+  }
+
   render() {
     const { match } = this.props;
     return (
@@ -16,4 +21,11 @@ class CategoriesPage extends Component {
     );
   }
 }
-export default connect(null, null)(CategoriesPage);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRequestCategories: () => dispatch(requestCategoriesIfNeeded()),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CategoriesPage);

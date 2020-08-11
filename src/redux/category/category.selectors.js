@@ -1,6 +1,7 @@
 import { createSelector } from "reselect";
 
-const selectCategories = (state) => state.categories;
+const selectCatalog = (state) => state.categories;
+const selectCategories = (state) => state.categories.categories;
 
 export const selectCategoriesOverview = createSelector(
   [selectCategories],
@@ -14,12 +15,24 @@ export const selectCategory = (categoryId) =>
   );
 
 export const selectFacets = (categoryId) =>
-  createSelector(selectCategory(categoryId), (category) => category.facets);
+  createSelector(selectCategory(categoryId), (category) =>
+    category ? category.facets : []
+  );
+
+export const selectCategoryIsLoading = createSelector(
+  [selectCatalog],
+  (catalog) => {
+    return !catalog.loaded;
+  }
+);
 
 export const selectVisibleEntries = (categoryId) =>
   createSelector(
     [selectCategory(categoryId), selectFacets(categoryId)],
     (category, facets) => {
+      if (!(category && category.entries)) {
+        return [];
+      }
       const activeFacets = facets
         .filter((facet) => facet.active)
         .map((facet) => facet.id);
